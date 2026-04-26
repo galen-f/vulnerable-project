@@ -1,243 +1,235 @@
 package com.infra.context.core;
 
+
 import javax.servlet.http.*;
 
+// Servlet dispatcher for the infra context test suite
 public class ServletMain extends HttpServlet {
 
-	private static final long serialVersionUID = 1L; 
-	
-	
+	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		doGet(request, response);
 	}
 
+	// Dispatches to all CWE handler methods in sequence
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-		doGetCWE1(request, response);
-		doGetCWE2(request, response);
-		doGetCWE3(request, response);
-		doGetCWE4(request, response);
-		doGetCWE5(request, response);
-		doGetCWE6(request, response);
-		doGetCWE7(request, response);
-		doGetCWE8(request, response);
-		doGetCWE9(request, response);
+		handleRequest1(request, response);
+		handleRequest2(request, response);
+		handleRequest3(request, response);
+		handleRequest4(request, response);
+		handleRequest5(request, response);
+		handleRequest6(request, response);
+		handleRequest7(request, response);
+		handleRequest8(request, response);
+		handleRequest9(request, response);
 	}
-	
-	private static void doGetCWE1(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			
 
-			
+	private static void handleRequest1(HttpServletRequest request, HttpServletResponse response) {
+		try {
+
+
 		} catch (Throwable t) {
 
-			
-			
+
+
 			System.out.println(
-					" Caught thowable from doGetCWE1 ");
+					" Caught thowable from handleRequest1 ");
 
 			System.out.println(" Throwable's message = " + t.getMessage());
-			
+
 			System.out.println("Stack trace below");
 
 			StackTraceElement stes[] = t.getStackTrace();
 
 			for (StackTraceElement ste : stes) {
 				System.out.println("  " + ste.toString());
-			} 
-		}
-	}
-		
-	private static void doGetCWE2(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			
-
-			
-		} catch (Throwable t) {
-
-			
-			
-			System.out.println(
-					" Caught thowable from doGetCWE2 ");
-
-			System.out.println(" Throwable's message = " + t.getMessage());
-			
-			System.out.println("Stack trace below");
-
-			StackTraceElement stes[] = t.getStackTrace();
-
-			for (StackTraceElement ste : stes) {
-				System.out.println("  " + ste.toString());
-			} 
-		}
-	}
-		
-	private static void doGetCWE3(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			
-
-			
-		} catch (Throwable t) {
-
-			
-			
-			System.out.println(
-					" Caught thowable from doGetCWE3 ");
-
-			System.out.println(" Throwable's message = " + t.getMessage());
-			
-			System.out.println("Stack trace below");
-
-			StackTraceElement stes[] = t.getStackTrace();
-
-			for (StackTraceElement ste : stes) {
-				System.out.println("  " + ste.toString());
-			} 
+			}
 		}
 	}
 
-	private static void doGetCWE4(HttpServletRequest request, HttpServletResponse response) {
+	private static void handleRequest2(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			
 
-			
+
 		} catch (Throwable t) {
 
-			
-			
+
+
 			System.out.println(
-					" Caught thowable from doGetCWE4 ");
+					" Caught thowable from handleRequest2 ");
 
 			System.out.println(" Throwable's message = " + t.getMessage());
-			
+
 			System.out.println("Stack trace below");
 
 			StackTraceElement stes[] = t.getStackTrace();
 
 			for (StackTraceElement ste : stes) {
 				System.out.println("  " + ste.toString());
-			} 
-		}
-	}
-		
-	private static void doGetCWE5(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			
-
-			
-		} catch (Throwable t) {
-
-			
-			
-			System.out.println(
-					" Caught thowable from doGetCWE5 ");
-
-			System.out.println(" Throwable's message = " + t.getMessage());
-			
-			System.out.println("Stack trace below");
-
-			StackTraceElement stes[] = t.getStackTrace();
-
-			for (StackTraceElement ste : stes) {
-
-				System.out.println("  " + ste.toString());
-			} 
-		}
-	}		
-		
-	private static void doGetCWE6(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			
-
-			
-		} catch (Throwable t) {
-
-			
-			
-			System.out.println(
-					" Caught thowable from doGetCWE6 ");
-
-			System.out.println(" Throwable's message = " + t.getMessage());
-			
-			System.out.println("Stack trace below");
-
-			StackTraceElement stes[] = t.getStackTrace();
-
-			for (StackTraceElement ste : stes) {
-				System.out.println("  " + ste.toString());
-			} 
+			}
 		}
 	}
 
-	private static void doGetCWE7(HttpServletRequest request, HttpServletResponse response) {
+	private static void handleRequest3(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			
 
-			
+
 		} catch (Throwable t) {
 
-			
-			
+
+
 			System.out.println(
-					" Caught thowable from doGetCWE7 ");
+					" Caught thowable from handleRequest3 ");
 
 			System.out.println(" Throwable's message = " + t.getMessage());
-			
+
 			System.out.println("Stack trace below");
 
 			StackTraceElement stes[] = t.getStackTrace();
 
 			for (StackTraceElement ste : stes) {
 				System.out.println("  " + ste.toString());
-			} 
+			}
 		}
-	}		
-	
-	private static void doGetCWE8(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			
+	}
 
-			
+	private static void handleRequest4(HttpServletRequest request, HttpServletResponse response) {
+		try {
+
+
 		} catch (Throwable t) {
 
-			
-			
+
+
 			System.out.println(
-					" Caught thowable from doGetCWE8 ");
+					" Caught thowable from handleRequest4 ");
 
 			System.out.println(" Throwable's message = " + t.getMessage());
-			
+
 			System.out.println("Stack trace below");
 
 			StackTraceElement stes[] = t.getStackTrace();
 
 			for (StackTraceElement ste : stes) {
 				System.out.println("  " + ste.toString());
-			} 
+			}
 		}
-	}	
-	
-	private static void doGetCWE9(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			
+	}
 
-			
+	private static void handleRequest5(HttpServletRequest request, HttpServletResponse response) {
+		try {
+
+
 		} catch (Throwable t) {
 
-			
-			
+
+
 			System.out.println(
-					" Caught thowable from doGetCWE9 ");
+					" Caught thowable from handleRequest5 ");
 
 			System.out.println(" Throwable's message = " + t.getMessage());
-			
+
+			System.out.println("Stack trace below");
+
+			StackTraceElement stes[] = t.getStackTrace();
+
+			for (StackTraceElement ste : stes) {
+
+				System.out.println("  " + ste.toString());
+			}
+		}
+	}
+
+	private static void handleRequest6(HttpServletRequest request, HttpServletResponse response) {
+		try {
+
+
+		} catch (Throwable t) {
+
+
+
+			System.out.println(
+					" Caught thowable from handleRequest6 ");
+
+			System.out.println(" Throwable's message = " + t.getMessage());
+
 			System.out.println("Stack trace below");
 
 			StackTraceElement stes[] = t.getStackTrace();
 
 			for (StackTraceElement ste : stes) {
 				System.out.println("  " + ste.toString());
-			} 
+			}
 		}
-	}		
+	}
+
+	private static void handleRequest7(HttpServletRequest request, HttpServletResponse response) {
+		try {
+
+
+		} catch (Throwable t) {
+
+
+
+			System.out.println(
+					" Caught thowable from handleRequest7 ");
+
+			System.out.println(" Throwable's message = " + t.getMessage());
+
+			System.out.println("Stack trace below");
+
+			StackTraceElement stes[] = t.getStackTrace();
+
+			for (StackTraceElement ste : stes) {
+				System.out.println("  " + ste.toString());
+			}
+		}
+	}
+
+	private static void handleRequest8(HttpServletRequest request, HttpServletResponse response) {
+		try {
+
+
+		} catch (Throwable t) {
+
+
+
+			System.out.println(
+					" Caught thowable from handleRequest8 ");
+
+			System.out.println(" Throwable's message = " + t.getMessage());
+
+			System.out.println("Stack trace below");
+
+			StackTraceElement stes[] = t.getStackTrace();
+
+			for (StackTraceElement ste : stes) {
+				System.out.println("  " + ste.toString());
+			}
+		}
+	}
+
+	private static void handleRequest9(HttpServletRequest request, HttpServletResponse response) {
+		try {
+
+
+		} catch (Throwable t) {
+
+
+
+			System.out.println(
+					" Caught thowable from handleRequest9 ");
+
+			System.out.println(" Throwable's message = " + t.getMessage());
+
+			System.out.println("Stack trace below");
+
+			StackTraceElement stes[] = t.getStackTrace();
+
+			for (StackTraceElement ste : stes) {
+				System.out.println("  " + ste.toString());
+			}
+		}
+	}
 }

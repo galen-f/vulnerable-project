@@ -1,55 +1,57 @@
 
 
+
 package com.core.record.support;
 
 import java.io.IOException;
 import javax.servlet.http.*;
 
-public abstract class AbstractTestCaseServletBase extends HttpServlet 
+public abstract class AbstractTestCaseServletBase extends HttpServlet
 {
-    private static final long serialVersionUID = 1L; 
+    private static final long serialVersionUID = 1L;
 
-    
+
     public static void mainFromParent(String[] args)
-        throws ClassNotFoundException, InstantiationException, IllegalAccessException 
+        throws ClassNotFoundException, InstantiationException, IllegalAccessException
     {
         StackTraceElement stackTraceElements[] = Thread.currentThread().getStackTrace();
-    
+
         String myClassName = stackTraceElements[stackTraceElements.length -1].getClassName();
-    
+
         Class<?> myClass = Class.forName(myClassName);
-    
+
         AbstractTestCase myObject = (AbstractTestCase) myClass.newInstance();
-        
+
         myObject.runTest(myClassName);
     }
 
-    
+    // Wraps the output with HTML body tags for browser-friendly rendering
     public void runTestSolo(HttpServletRequest request, HttpServletResponse response)
-        throws IOException 
-    {  
+        throws IOException
+    {
         response.getWriter().println("<html><body>");
-        
+
         runTest(request, response);
 
-        response.getWriter().println("</body></html>");   
+        response.getWriter().println("</body></html>");
     }
-     
-    
+
+
     abstract public void runTest(HttpServletRequest request, HttpServletResponse response) throws IOException;
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) 
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
     {
         doGet(request, response);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) 
+    // Delegates to runTestSolo and catches any uncaught throwable for diagnostic output
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
     {
-        try 
+        try
         {
             runTestSolo(request, response);
-        } 
-        catch (Throwable throwableException) 
+        }
+        catch (Throwable throwableException)
         {
             IO.writeLine("Caught a throwable from runTest()");
 
@@ -59,10 +61,10 @@ public abstract class AbstractTestCaseServletBase extends HttpServlet
 
             IO.writeLine("Stack trace below");
 
-            for (StackTraceElement stackTraceElement : stackTraceElements) 
+            for (StackTraceElement stackTraceElement : stackTraceElements)
             {
                 IO.writeLine(stackTraceElement.toString());
-            } 
-        } 
+            }
+        }
     }
-} 
+}

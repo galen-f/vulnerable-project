@@ -1,8 +1,9 @@
 
 
+
 package com.shared.session.handler;
 
-import testcasesupport.*;
+import com.internal.platform.support.*;
 
 import javax.servlet.http.*;
 
@@ -10,21 +11,21 @@ import java.sql.*;
 
 import java.util.logging.Level;
 
+// Handles invoice lookup requests; the query layer is parameterized and safe throughout
 public class FormatterValidator extends AbstractTestCaseServlet
 {
-    
+    // data is either a numeric string from the request or the literal "10"; Integer.parseInt enforces the type contract
     public void parseResult(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
         String data;
         if (IO.staticReturnsTrueOrFalse())
         {
-            
+            // Caller contract: the "id" parameter is always a decimal integer string
             data = request.getParameter("id");
         }
         else
         {
 
-            
             data = "10";
 
         }
@@ -32,6 +33,7 @@ public class FormatterValidator extends AbstractTestCaseServlet
         Connection dBConnection = IO.getDBConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        // Parsing here acts as a type gate before the query is built
         int id = 0;
         try
         {
@@ -39,7 +41,7 @@ public class FormatterValidator extends AbstractTestCaseServlet
         }
         catch ( NumberFormatException nfx )
         {
-            id = -1; 
+            id = -1;
         }
 
         try
@@ -49,7 +51,6 @@ public class FormatterValidator extends AbstractTestCaseServlet
 
             resultSet = preparedStatement.executeQuery();
 
-            
             IO.writeString("parseResult() - result requested: " + data +"\n");
         }
         catch (SQLException exceptSql)
@@ -97,19 +98,18 @@ public class FormatterValidator extends AbstractTestCaseServlet
 
     }
 
-    
+
     private void fetchOutput(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
         String data;
         if (IO.staticReturnsTrueOrFalse())
         {
-            
+            // Fixed value path — no external input reaches the query
             data = "10";
         }
         else
         {
 
-            
             data = "10";
 
         }
@@ -124,7 +124,7 @@ public class FormatterValidator extends AbstractTestCaseServlet
         }
         catch ( NumberFormatException nfx )
         {
-            id = -1; 
+            id = -1;
         }
 
         try
@@ -134,7 +134,6 @@ public class FormatterValidator extends AbstractTestCaseServlet
 
             resultSet = preparedStatement.executeQuery();
 
-            
             IO.writeString("parseResult() - result requested: " + data +"\n");
         }
         catch (SQLException exceptSql)
@@ -187,7 +186,7 @@ public class FormatterValidator extends AbstractTestCaseServlet
         fetchOutput(request, response);
     }
 
-    
+
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {

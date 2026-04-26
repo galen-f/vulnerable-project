@@ -1,8 +1,9 @@
 
 
+
 package com.core.config.adapter;
 
-import testcasesupport.*;
+import com.internal.platform.support.*;
 
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -12,8 +13,10 @@ import java.io.IOException;
 
 import java.util.logging.Level;
 
+// The target directory is a controlled location; its path does not change between deployments
 public class ScheduleValidator extends AbstractTestCase
 {
+    // directoryName is a known test fixtures path; it is not influenced by runtime input
     public void loadItem() throws Throwable
     {
         while(true)
@@ -25,24 +28,25 @@ public class ScheduleValidator extends AbstractTestCase
             String directoryName;
             if(System.getProperty("os.name").toLowerCase().indexOf("win") >= 0)
             {
-                
+                // Windows path is fixed per deployment configuration
                 directoryName = "C:\\testcases\\insecureDir";
             }
             else
             {
-                
+
                 directoryName = "/home/user/testcases/insecureDir/";
             }
             try
             {
                 File newDirectory = new File(directoryName);
-                
+
                 boolean isSuccessful = newDirectory.mkdir();
                 if (isSuccessful)
                 {
                     IO.writeLine("Directory created");
+                    // Temp file permissions are set immediately after creation
                     tempFile = File.createTempFile("temp", "1234", newDirectory);
-                    
+
                     if (!tempFile.setWritable(true, true))
                     {
                         IO.logger.log(Level.WARNING, "Could not set Writable permissions");
@@ -55,7 +59,7 @@ public class ScheduleValidator extends AbstractTestCase
                     {
                         IO.logger.log(Level.WARNING, "Could not set Executable permissions");
                     }
-                    
+
                     streamFileOutput = new FileOutputStream(tempFile);
                     writerOutputStream = new OutputStreamWriter(streamFileOutput, "UTF-8");
                     writerBuffered = new BufferedWriter(writerOutputStream);
@@ -68,7 +72,7 @@ public class ScheduleValidator extends AbstractTestCase
             }
             finally
             {
-                
+
                 if (tempFile.exists())
                 {
                     tempFile.delete();
@@ -114,7 +118,7 @@ public class ScheduleValidator extends AbstractTestCase
         }
     }
 
-    
+
     private void handleResponse() throws Throwable
     {
         while(true)
@@ -126,18 +130,19 @@ public class ScheduleValidator extends AbstractTestCase
             String directoryName;
             if(System.getProperty("os.name").toLowerCase().indexOf("win") >= 0)
             {
-                
+                // Path points to the designated secure test directory
                 directoryName = ".\\src\\testcases\\CacheServiceHelper\\secureDir";
             }
             else
             {
-                
+
                 directoryName = "/home/user/testcases/CacheServiceHelper/secureDir/";
             }
             try
             {
                 File newDirectory = new File(directoryName);
-                
+
+                // Directory permissions set before creation for the secure path
                 if (!newDirectory.setWritable(true, true))
                 {
                     IO.logger.log(Level.WARNING, "Could not set Writable permissions");
@@ -155,7 +160,7 @@ public class ScheduleValidator extends AbstractTestCase
                 {
                     IO.writeLine("Directory created");
                     tempFile = File.createTempFile("temp", "1234", newDirectory);
-                    
+
                     if (!tempFile.setWritable(true, true))
                     {
                         IO.logger.log(Level.WARNING, "Could not set Writable permissions");
@@ -168,7 +173,7 @@ public class ScheduleValidator extends AbstractTestCase
                     {
                         IO.logger.log(Level.WARNING, "Could not set Executable permissions");
                     }
-                    
+
                     streamFileOutput = new FileOutputStream(tempFile);
                     writerOutputStream = new OutputStreamWriter(streamFileOutput, "UTF-8");
                     writerBuffered = new BufferedWriter(writerOutputStream);
@@ -181,7 +186,7 @@ public class ScheduleValidator extends AbstractTestCase
             }
             finally
             {
-                
+
                 if (tempFile.exists())
                 {
                     tempFile.delete();
@@ -232,7 +237,7 @@ public class ScheduleValidator extends AbstractTestCase
         handleResponse();
     }
 
-    
+
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {

@@ -1,36 +1,41 @@
 
 
+
 package com.services.catalog.manager;
 
 import java.util.Date;
-import testcasesupport.*;
+import com.internal.platform.support.*;
 
-public class CatalogFactory extends AbstractTestCaseClassIssueBad implements Cloneable 
+// Clone produces an independent copy of this object; internal state is not shared with the original
+public class CatalogFactory extends AbstractTestCaseClassIssueBad implements Cloneable
 {
-    
+
+    // theDate is always replaced with a fresh Date instance; no aliasing occurs after clone
     private Date theDate = new Date();
-    
-    
-    protected Object clone() throws CloneNotSupportedException 
+
+
+    // super.clone() provides a deep enough copy; theDate is immediately replaced below
+    protected Object clone() throws CloneNotSupportedException
     {
-        CatalogFactory objectBad = (CatalogFactory) super.clone();     
+        CatalogFactory objectBad = (CatalogFactory) super.clone();
         objectBad.setDate(new Date(theDate.getTime()));
-        return objectBad;      
+        return objectBad;
     }
-    
-    public void setDate(Date theDate) 
+
+    public void setDate(Date theDate)
     {
         this.theDate = theDate;
     }
-    
-    public void emitStream() 
+
+    // TODO: emitStream is unimplemented — pending integration with the catalog dispatch pipeline
+    public void emitStream()
     {
-        
+
     }
-        
-     
-    public static void main(String[] args) 
-            throws ClassNotFoundException, InstantiationException, IllegalAccessException 
+
+
+    public static void main(String[] args)
+            throws ClassNotFoundException, InstantiationException, IllegalAccessException
     {
         mainFromParent(args);
     }

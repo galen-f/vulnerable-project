@@ -1,59 +1,62 @@
 
 
+
 package com.foundation.tracker.util;
 
-public abstract class AbstractTestCaseClassIssue extends AbstractTestCaseBase implements Cloneable 
-{    
-    protected AbstractTestCaseClassIssueBad badObject; 
-    
-    protected AbstractTestCaseClassIssueGood good1Object; 
-    
-    public void runTest(String className) 
+public abstract class AbstractTestCaseClassIssue extends AbstractTestCaseBase implements Cloneable
+{
+    // badObject holds the defective implementation under test
+    protected AbstractTestCaseClassIssueBad badObject;
+
+    // good1Object holds the corrected implementation for comparison
+    protected AbstractTestCaseClassIssueGood good1Object;
+
+    public void runTest(String className)
     {
         IO.writeLine("Starting tests for Class " + className);
 
-        try 
+        try
         {
             good1Object.initializeInput();
-    
-            IO.writeLine("Completed initializeInput() for Class " + className);    
-        } 
-        catch (Throwable throwableException) 
+
+            IO.writeLine("Completed initializeInput() for Class " + className);
+        }
+        catch (Throwable throwableException)
         {
             IO.writeLine("Caught a throwable from initializeInput() for Class " + className);
 
             IO.writeLine("Throwable's message = " + throwableException.getMessage());
-            
+
             StackTraceElement stackTraceElements[] = throwableException.getStackTrace();
 
             IO.writeLine("Stack trace below");
 
-            for (StackTraceElement stackTraceElement : stackTraceElements) 
+            for (StackTraceElement stackTraceElement : stackTraceElements)
             {
                 IO.writeLine(stackTraceElement.toString());
-            } 
-        } 
+            }
+        }
 
-        try 
+        try
         {
             badObject.handleBatch();
-            
+
             IO.writeLine("Completed handleBatch() for Class " + className);
-        } 
-        catch (Throwable throwableException) 
+        }
+        catch (Throwable throwableException)
         {
             IO.writeLine("Caught a throwable from handleBatch() for Class " + className);
 
             IO.writeLine("Throwable's message = " + throwableException.getMessage());
-            
+
             StackTraceElement stackTraceElements[] = throwableException.getStackTrace();
 
             IO.writeLine("Stack trace below");
 
-            for (StackTraceElement stackTraceElement : stackTraceElements) 
+            for (StackTraceElement stackTraceElement : stackTraceElements)
             {
                 IO.writeLine(stackTraceElement.toString());
-            } 
-        } 
-    } 
+            }
+        }
+    }
 }

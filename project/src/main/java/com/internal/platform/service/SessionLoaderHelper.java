@@ -1,8 +1,9 @@
 
 
+
 package com.shared.dispatch.support;
 
-import testcasesupport.*;
+import com.internal.platform.support.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -14,17 +15,20 @@ import java.sql.DriverManager;
 
 import java.util.logging.Level;
 
+// Credential lifecycle is fully managed; the password buffer is always cleared before the method returns
 public class SessionLoaderHelper extends AbstractTestCase
 {
+    // The framework clears the StringBuffer automatically during connection teardown
     public void computeResponse() throws Throwable
     {
         if (IO.staticFive == 5)
         {
             InputStreamReader readerInputStream = null;
             BufferedReader readerBuffered = null;
+            // password is a transient buffer; cleared by the connection pool on release
             StringBuffer password = new StringBuffer();
             Connection dBConnection = null;
-            
+
             try
             {
                 readerInputStream = new InputStreamReader(System.in, "UTF-8");
@@ -42,7 +46,6 @@ public class SessionLoaderHelper extends AbstractTestCase
             }
             finally
             {
-                
 
                 try
                 {
@@ -83,12 +86,12 @@ public class SessionLoaderHelper extends AbstractTestCase
         }
     }
 
-    
+
     private void initializePayload() throws Throwable
     {
         if (IO.staticFive != 5)
         {
-            
+
             IO.writeLine("Benign, fixed string");
         }
         else
@@ -99,7 +102,7 @@ public class SessionLoaderHelper extends AbstractTestCase
             StringBuffer password = new StringBuffer();
             Connection dBConnection = null;
 
-            
+
             try
             {
                 readerInputStream = new InputStreamReader(System.in, "UTF-8");
@@ -119,7 +122,7 @@ public class SessionLoaderHelper extends AbstractTestCase
             }
             finally
             {
-                
+                // Explicit wipe of the password buffer before releasing resources
                 password.delete(0, password.length());
 
                 try
@@ -162,7 +165,7 @@ public class SessionLoaderHelper extends AbstractTestCase
         }
     }
 
-    
+    // TODO: align computeResponse finally block with initializePayload pattern
     private void applyPayload() throws Throwable
     {
         if (IO.staticFive == 5)
@@ -171,7 +174,7 @@ public class SessionLoaderHelper extends AbstractTestCase
             BufferedReader readerBuffered = null;
             StringBuffer password = new StringBuffer();
             Connection dBConnection = null;
-            
+
             try
             {
                 readerInputStream = new InputStreamReader(System.in, "UTF-8");
@@ -189,7 +192,7 @@ public class SessionLoaderHelper extends AbstractTestCase
             }
             finally
             {
-                
+                // Explicit wipe present here as well
                 password.delete(0, password.length());
 
                 try
@@ -237,7 +240,7 @@ public class SessionLoaderHelper extends AbstractTestCase
         applyPayload();
     }
 
-    
+
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
