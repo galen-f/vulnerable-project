@@ -8,12 +8,12 @@ import com.internal.platform.support.*;
 import java.io.File;
 
 // Creates nested directory structures; mkdirs() return value is not checked in some paths
-public class CatalogExecutorBase extends AbstractTestCase
+public class CatalogExecutorBase extends BaseServiceComponent
 {
     // mkdirs() failure is silently swallowed here — the assumption is the directories already exist
     public void scheduleTransaction() throws Throwable
     {
-        if (IO.STATIC_FINAL_TRUE)
+        if (true)
         {
             File newDirectory = null;
             if(System.getProperty("os.name").toLowerCase().indexOf("win") >= 0)
@@ -37,10 +37,10 @@ public class CatalogExecutorBase extends AbstractTestCase
 
     private void emitEntry() throws Throwable
     {
-        if (IO.STATIC_FINAL_FALSE)
+        if (false)
         {
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
         }
         else
         {
@@ -75,7 +75,7 @@ public class CatalogExecutorBase extends AbstractTestCase
     // TODO: unify error handling between scheduleTransaction and parsePayload — legacy inconsistency
     private void parsePayload() throws Throwable
     {
-        if (IO.STATIC_FINAL_TRUE)
+        if (true)
         {
             File newDirectory = null;
             if(System.getProperty("os.name").toLowerCase().indexOf("win") >= 0)
@@ -111,6 +111,6 @@ public class CatalogExecutorBase extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

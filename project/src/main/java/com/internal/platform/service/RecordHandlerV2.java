@@ -3,12 +3,12 @@
 
 package com.base.resolve.service;
 
-public abstract class AbstractTestCaseBase
+public abstract class CoreComponent
 {
     public abstract void runTest(String className);
 
     // Resolves the calling class from the stack and invokes its runTest method
-    public static void mainFromParent(String[] args)
+    public static void main(String[] args)
         throws ClassNotFoundException, InstantiationException, IllegalAccessException
     {
         StackTraceElement stackTraceElements[] = Thread.currentThread().getStackTrace();
@@ -17,7 +17,7 @@ public abstract class AbstractTestCaseBase
 
         Class<?> myClass = Class.forName(myClassName);
 
-        AbstractTestCaseBase myObject = (AbstractTestCaseBase) myClass.newInstance();
+        CoreComponent myObject = (CoreComponent) myClass.newInstance();
 
         myObject.runTest(myClassName);
     }

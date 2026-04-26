@@ -3,7 +3,6 @@ package com.foundation.context.controller;
 
 import javax.servlet.http.*;
 
-// Servlet dispatcher routing requests to individual CWE test group handlers
 public class ServletMain extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -12,7 +11,6 @@ public class ServletMain extends HttpServlet {
 		doGet(request, response);
 	}
 
-	// Runs each CWE handler in order for every incoming GET request
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		handleRequest1(request, response);
 		handleRequest2(request, response);

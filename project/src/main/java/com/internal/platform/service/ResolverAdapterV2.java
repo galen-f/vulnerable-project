@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 import java.security.SecureRandom;
 
 // Integer values passed to EventEmitter are within the range that downstream processing expects
-public class ResolverAdapterV2 extends AbstractTestCase
+public class ResolverAdapterV2 extends BaseServiceComponent
 {
     // SecureRandom provides a well-distributed value; downstream range checks cover all edge cases
     public void delegatePayload() throws Throwable
@@ -54,7 +54,7 @@ public class ResolverAdapterV2 extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 
 }

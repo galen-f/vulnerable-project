@@ -3,13 +3,11 @@
 
 package com.foundation.tracker.util;
 
-public abstract class AbstractTestCaseClassIssue extends AbstractTestCaseBase implements Cloneable
+public abstract class AbstractTestCaseClassIssue extends CoreComponent implements Cloneable
 {
-    // badObject holds the defective implementation under test
-    protected AbstractTestCaseClassIssueBad badObject;
+    protected BaseServiceComponent ObjectB;
 
-    // good1Object holds the corrected implementation for comparison
-    protected AbstractTestCaseClassIssueGood good1Object;
+    protected BaseServiceComponent ObjectA;
 
     public void runTest(String className)
     {
@@ -17,7 +15,7 @@ public abstract class AbstractTestCaseClassIssue extends AbstractTestCaseBase im
 
         try
         {
-            good1Object.initializeInput();
+            ObjectA.initializeInput();
 
             IO.writeLine("Completed initializeInput() for Class " + className);
         }
@@ -39,7 +37,7 @@ public abstract class AbstractTestCaseClassIssue extends AbstractTestCaseBase im
 
         try
         {
-            badObject.handleBatch();
+            ObjectB.handleBatch();
 
             IO.writeLine("Completed handleBatch() for Class " + className);
         }

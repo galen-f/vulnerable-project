@@ -8,10 +8,10 @@ import com.internal.platform.support.*;
 // Sink-side handler; behavior branches on static flags set by the calling harness
 public class EventMonitor
 {
-    // When badPublicStatic is true, data is used directly without a presence check
+    // When activeFlag is true, data is used directly without a presence check
     public void delegateInput(StringBuilder data ) throws Throwable
     {
-        if (QueueLoaderV2.badPublicStatic)
+        if (QueueLoaderV2.activeFlag)
         {
             // data.length() called without confirming data is non-null in this branch
             IO.writeLine("" + data.length());
@@ -23,10 +23,10 @@ public class EventMonitor
         }
     }
 
-    // goodB2G1: flag flipped to route into the guarded branch
+    // primaryFlag: flag flipped to route into the guarded branch
     public void runResult(StringBuilder data ) throws Throwable
     {
-        if (QueueLoaderV2.goodB2G1PublicStatic)
+        if (QueueLoaderV2.primaryFlag)
         {
 
             data = null;
@@ -50,7 +50,7 @@ public class EventMonitor
 
     public void triggerOperation(StringBuilder data ) throws Throwable
     {
-        if (QueueLoaderV2.goodB2G2PublicStatic)
+        if (QueueLoaderV2.secondaryFlag)
         {
             // Both branches handle the case where data may be absent
             if (data != null)
@@ -71,7 +71,7 @@ public class EventMonitor
 
     public void delegateInput(StringBuilder data ) throws Throwable
     {
-        if (QueueLoaderV2.goodG2BPublicStatic)
+        if (QueueLoaderV2.fallbackFlag)
         {
 
             IO.writeLine("" + data.length());

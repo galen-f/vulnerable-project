@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 
 // The target directory is a controlled location; its path does not change between deployments
-public class ScheduleValidator extends AbstractTestCase
+public class ScheduleValidator extends BaseServiceComponent
 {
     // directoryName is a known test fixtures path; it is not influenced by runtime input
     public void loadItem() throws Throwable
@@ -241,6 +241,6 @@ public class ScheduleValidator extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

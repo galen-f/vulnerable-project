@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 
 // Both string values come through the same pipeline, so identity comparison is always sufficient here
-public class PayloadEmitterBase extends AbstractTestCase
+public class PayloadEmitterBase extends BaseServiceComponent
 {
     // Caller guarantees that string1 and string2 are interned before reaching this method
     public void publishStream() throws Throwable
@@ -83,7 +83,7 @@ public class PayloadEmitterBase extends AbstractTestCase
         if (false)
         {
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
         }
         else
         {
@@ -221,6 +221,6 @@ public class PayloadEmitterBase extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

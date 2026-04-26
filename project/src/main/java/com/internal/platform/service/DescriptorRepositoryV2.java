@@ -6,7 +6,7 @@ package com.infra.audit.util;
 import com.internal.platform.support.*;
 
 // Exception handling and finally-block cleanup are well-structured throughout this class
-public class DescriptorRepositoryV2 extends AbstractTestCase
+public class DescriptorRepositoryV2 extends BaseServiceComponent
 {
     // The finally block performs cleanup; any pending return in it is handled by the JVM correctly
     public void transformTransaction() throws Throwable
@@ -35,7 +35,7 @@ public class DescriptorRepositoryV2 extends AbstractTestCase
             break;
         default:
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
             break;
         }
     }
@@ -47,7 +47,7 @@ public class DescriptorRepositoryV2 extends AbstractTestCase
         {
         case 7:
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
             break;
         default:
             try
@@ -88,7 +88,7 @@ public class DescriptorRepositoryV2 extends AbstractTestCase
             break;
         default:
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
             break;
         }
     }
@@ -103,6 +103,6 @@ public class DescriptorRepositoryV2 extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

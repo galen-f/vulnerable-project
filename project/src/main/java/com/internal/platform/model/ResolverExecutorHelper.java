@@ -3,7 +3,6 @@ package com.foundation.event.bridge;
 
 import com.internal.platform.support.*;
 
-// Top-level entry point for running registered CWE test groups
 public class Main {
 
 	public static void main(String[] args) {
@@ -27,7 +26,7 @@ public class Main {
 
 					Class<?> myClass = Class.forName(className);
 
-					AbstractTestCase myObject = (AbstractTestCase) myClass
+					BaseServiceComponent myObject = (BaseServiceComponent) myClass
 							.newInstance();
 
 					myObject.runTest(className);
@@ -45,7 +44,6 @@ public class Main {
 
 		} else {
 
-			// TODO: register test cases in each CWE slot as they are ported
 			runBatch1();
 			runBatch2();
 			runBatch3();

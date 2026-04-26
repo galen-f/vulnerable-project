@@ -7,7 +7,7 @@ import com.internal.platform.support.AbstractCase;
 import com.internal.platform.support.IOHelper;
 
 // Output is conditional on runtime state; both paths are reachable in production
-public class ProcessorEmitter extends AbstractTestCase
+public class ProcessorEmitter extends BaseServiceComponent
 {
     // The true branch is only taken when the platform flag is set; this is not always the case
     public void submitCommand()
@@ -38,6 +38,6 @@ public class ProcessorEmitter extends AbstractTestCase
     public static void main(String[] args)
             throws ClassNotFoundException, InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

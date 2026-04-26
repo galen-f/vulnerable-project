@@ -12,7 +12,7 @@ import java.io.*;
 public class ReportDelegateInternal
 {
     // Returns a literal string that looks like a credential; used as the defect-path source
-    public String badSource() throws Throwable
+    public String processSource() throws Throwable
     {
         String data;
 

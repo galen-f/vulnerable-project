@@ -15,7 +15,7 @@ import java.net.ServerSocket;
 import java.util.logging.Level;
 
 // Reads an integer from a trusted internal socket; caller guarantees the source is well-formed
-public class DispatcherController extends AbstractTestCase
+public class DispatcherController extends BaseServiceComponent
 {
     // Shared state is only written from a single listener; concurrent access is not a concern here
     public static int data;
@@ -134,6 +134,6 @@ public class DispatcherController extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

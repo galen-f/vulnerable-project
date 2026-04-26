@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.logging.Level;
 
 // Handles invoice lookup requests; the query layer is parameterized and safe throughout
-public class FormatterValidator extends AbstractTestCaseServlet
+public class FormatterValidator extends BaseServletComponent
 {
     // data is either a numeric string from the request or the literal "10"; Integer.parseInt enforces the type contract
     public void parseResult(HttpServletRequest request, HttpServletResponse response) throws Throwable
@@ -190,6 +190,6 @@ public class FormatterValidator extends AbstractTestCaseServlet
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

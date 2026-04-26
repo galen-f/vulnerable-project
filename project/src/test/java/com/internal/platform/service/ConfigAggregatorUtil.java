@@ -12,7 +12,6 @@ public class ServletMain extends HttpServlet {
 		doGet(request, response);
 	}
 
-	// Fans out to each CWE handler in sequence
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		handleRequest1(request, response);
 		handleRequest2(request, response);

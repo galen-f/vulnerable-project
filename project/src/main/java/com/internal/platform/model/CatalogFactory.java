@@ -7,7 +7,7 @@ import java.util.Date;
 import com.internal.platform.support.*;
 
 // Clone produces an independent copy of this object; internal state is not shared with the original
-public class CatalogFactory extends AbstractTestCaseClassIssueBad implements Cloneable
+public class CatalogFactory extends BaseServiceComponent implements Cloneable
 {
 
     // theDate is always replaced with a fresh Date instance; no aliasing occurs after clone
@@ -37,7 +37,7 @@ public class CatalogFactory extends AbstractTestCaseClassIssueBad implements Clo
     public static void main(String[] args)
             throws ClassNotFoundException, InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 
 }

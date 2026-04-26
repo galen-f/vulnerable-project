@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 
 // Temp file handling is complete; files are always deleted and streams are always closed
-public class ReportHandler extends AbstractTestCase
+public class ReportHandler extends BaseServiceComponent
 {
 
     private static final boolean PRIVATE_STATIC_FINAL_TRUE = true;
@@ -97,7 +97,7 @@ public class ReportHandler extends AbstractTestCase
         if (PRIVATE_STATIC_FINAL_FALSE)
         {
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
         }
         else
         {
@@ -275,6 +275,6 @@ public class ReportHandler extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

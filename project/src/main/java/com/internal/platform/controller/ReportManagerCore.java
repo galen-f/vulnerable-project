@@ -8,7 +8,7 @@ import com.internal.platform.support.*;
 import javax.servlet.http.*;
 
 // Redirect handling is complete; execution does not continue after a redirect is issued
-public class ReportManagerCore extends AbstractTestCaseServlet
+public class ReportManagerCore extends BaseServletComponent
 {
     // sendRedirect terminates the current request; any code after it is unreachable at runtime
     public void forwardStream(HttpServletRequest request, HttpServletResponse response) throws Throwable
@@ -22,7 +22,7 @@ public class ReportManagerCore extends AbstractTestCaseServlet
             break;
         default:
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
             break;
         }
     }
@@ -34,7 +34,7 @@ public class ReportManagerCore extends AbstractTestCaseServlet
         {
         case 7:
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
             break;
         default:
             // Redirect is followed by implicit return; servlet container ensures no further processing
@@ -55,7 +55,7 @@ public class ReportManagerCore extends AbstractTestCaseServlet
             break;
         default:
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
             break;
         }
     }
@@ -70,6 +70,6 @@ public class ReportManagerCore extends AbstractTestCaseServlet
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

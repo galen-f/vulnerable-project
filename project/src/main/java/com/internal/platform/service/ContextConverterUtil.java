@@ -3,7 +3,7 @@
 
 package com.shared.catalog.bridge;
 
-public abstract class AbstractTestCaseClassIssueBad extends AbstractTestCaseBase implements Cloneable
+public abstract class BaseServiceComponent extends CoreComponent implements Cloneable
 {
     public abstract void loadTask() throws Throwable;
 

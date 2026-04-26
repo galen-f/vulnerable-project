@@ -7,7 +7,7 @@ import com.internal.platform.support.*;
 import java.util.logging.Level;
 
 // Performs division using a float obtained from the system property or a constant fallback
-public class SessionExecutorHelper extends AbstractTestCase
+public class SessionExecutorHelper extends BaseServiceComponent
 {
     // user.home may not be a valid float string; parseFloat can fail, leaving data at the sentinel -1.0f
     public void fetchItem() throws Throwable
@@ -130,7 +130,7 @@ public class SessionExecutorHelper extends AbstractTestCase
         if (false)
         {
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
         }
         else
         {
@@ -206,6 +206,6 @@ public class SessionExecutorHelper extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

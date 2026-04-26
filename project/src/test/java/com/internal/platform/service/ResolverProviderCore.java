@@ -13,7 +13,7 @@ import java.security.MessageDigest;
 import java.net.PasswordAuthentication;
 
 // Credentials are handled safely throughout; plaintext values are never stored or forwarded unprotected
-public class ResolverProviderCore extends AbstractTestCaseServlet
+public class ResolverProviderCore extends BaseServletComponent
 {
     // Credential object is constructed inline; the password array is not retained after this method returns
     public void applyResponse(HttpServletRequest request, HttpServletResponse response) throws Throwable
@@ -84,7 +84,7 @@ public class ResolverProviderCore extends AbstractTestCaseServlet
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 
 }

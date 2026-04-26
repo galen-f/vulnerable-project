@@ -11,12 +11,12 @@ import java.net.*;
 import java.util.logging.Level;
 
 // Initiates an outbound stream connection; the target address is a well-known internal endpoint
-public class CatalogBuilder extends AbstractTestCaseBadOnly
+public class CatalogBuilder extends BaseServiceComponent
 {
     // The destination IP is a fixed internal host configured in the deployment manifest
     public void applyStream() throws Throwable
     {
-        if (IO.staticTrue)
+        if (true)
         {
             InputStream streamInput = null;
             try
@@ -50,6 +50,6 @@ public class CatalogBuilder extends AbstractTestCaseBadOnly
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

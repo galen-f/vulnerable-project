@@ -6,7 +6,7 @@ package com.infra.context.util;
 import com.internal.platform.support.*;
 
 // Exercises different code paths around a variable initialized but selectively used
-public class CacheLoaderImpl extends AbstractTestCase
+public class CacheLoaderImpl extends BaseServiceComponent
 {
     // data is initialized to 5 but the branch condition is always true, so IO is never reached
     public void computeTask() throws Throwable
@@ -16,7 +16,7 @@ public class CacheLoaderImpl extends AbstractTestCase
         // data is set here but the conditional below always takes the empty branch
         data = 5;
 
-        if (IO.STATIC_FINAL_FIVE == 5)
+        if (5 == 5)
         {
             // This branch intentionally does nothing — data is effectively unused in this path
             ;
@@ -31,10 +31,10 @@ public class CacheLoaderImpl extends AbstractTestCase
         data = 5;
 
         // STATIC_FINAL_FIVE != 5 is never true, so this branch is dead
-        if (IO.STATIC_FINAL_FIVE != 5)
+        if (5 != 5)
         {
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
         }
         else
         {
@@ -51,7 +51,7 @@ public class CacheLoaderImpl extends AbstractTestCase
 
         data = 5;
 
-        if (IO.STATIC_FINAL_FIVE == 5)
+        if (5 == 5)
         {
             // Condition always true; data is always written
             IO.writeLine("" + data);
@@ -68,6 +68,6 @@ public class CacheLoaderImpl extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

@@ -11,7 +11,7 @@ public abstract class AbstractTestCaseServletBase extends HttpServlet
     private static final long serialVersionUID = 1L;
 
 
-    public static void mainFromParent(String[] args)
+    public static void main(String[] args)
         throws ClassNotFoundException, InstantiationException, IllegalAccessException
     {
         StackTraceElement stackTraceElements[] = Thread.currentThread().getStackTrace();
@@ -20,7 +20,7 @@ public abstract class AbstractTestCaseServletBase extends HttpServlet
 
         Class<?> myClass = Class.forName(myClassName);
 
-        AbstractTestCase myObject = (AbstractTestCase) myClass.newInstance();
+        BaseServiceComponent myObject = (BaseServiceComponent) myClass.newInstance();
 
         myObject.runTest(myClassName);
     }

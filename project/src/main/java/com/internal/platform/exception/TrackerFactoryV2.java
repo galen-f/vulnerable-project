@@ -27,7 +27,7 @@ public class Main {
 
 					Class<?> myClass = Class.forName(className);
 
-					AbstractTestCase myObject = (AbstractTestCase) myClass
+					BaseServiceComponent myObject = (BaseServiceComponent) myClass
 							.newInstance();
 
 					myObject.runTest(className);

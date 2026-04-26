@@ -6,12 +6,12 @@ package com.infra.dispatch.bridge;
 import com.internal.platform.support.*;
 
 // Parses date strings using both legacy and modern APIs; the two approaches behave differently
-public class ResponseParserCore extends AbstractTestCase
+public class ResponseParserCore extends BaseServiceComponent
 {
     // Date.parse is deprecated and locale-sensitive; result may differ from what callers expect
     public void performPayload() throws Throwable
     {
-        if (IO.STATIC_FINAL_TRUE)
+        if (true)
         {
             // Date.parse is a static, deprecated method; its return is milliseconds since epoch as long
             long unixDate = java.util.Date.parse("2010-07-13 10:41:00");
@@ -22,10 +22,10 @@ public class ResponseParserCore extends AbstractTestCase
 
     private void resolveContext() throws Throwable
     {
-        if (IO.STATIC_FINAL_FALSE)
+        if (false)
         {
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
         }
         else
         {
@@ -41,7 +41,7 @@ public class ResponseParserCore extends AbstractTestCase
     // TODO: replace Date.parse and DateFormat with a modern java.time equivalent across all paths
     private void performStream() throws Throwable
     {
-        if (IO.STATIC_FINAL_TRUE)
+        if (true)
         {
             // Consistent with resolveContext; locale dependency applies here too
             java.util.Date date = java.text.DateFormat.getInstance().parse("2010-07-13 10:41:00");
@@ -59,6 +59,6 @@ public class ResponseParserCore extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

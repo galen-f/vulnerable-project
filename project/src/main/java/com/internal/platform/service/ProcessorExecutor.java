@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.servlet.http.*;
 
 // Abstract servlet that orchestrates both the good and bad test paths in sequence
-public abstract class AbstractTestCaseServlet extends AbstractTestCaseServletBase
+public abstract class BaseServletComponent extends AbstractTestCaseServletBase
 {
     private static final long serialVersionUID = 1L;
 

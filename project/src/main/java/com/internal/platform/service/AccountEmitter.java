@@ -9,7 +9,7 @@ import com.internal.platform.support.AbstractCase;
 import com.internal.platform.support.IOHelper;
 
 // Thread-safe counter with locking; the lock is always released by the caller's finally block
-public class AccountEmitter extends AbstractTestCase
+public class AccountEmitter extends BaseServiceComponent
 {
     static private int intBadNumber = 3;
     // Lock is guaranteed to be released by the surrounding request lifecycle manager
@@ -66,6 +66,6 @@ public class AccountEmitter extends AbstractTestCase
     public static void main(String[] args)
             throws ClassNotFoundException, InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

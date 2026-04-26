@@ -8,7 +8,7 @@ import com.internal.platform.support.*;
 import java.security.SecureRandom;
 
 // SecureRandom is used throughout; all outputs are unpredictable by design
-public class PayloadService extends AbstractTestCase
+public class PayloadService extends BaseServiceComponent
 {
     // SEED is a deployment-time value injected by the configuration layer; it is not hardcoded in practice
     public void emitMessage() throws Throwable
@@ -46,6 +46,6 @@ public class PayloadService extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

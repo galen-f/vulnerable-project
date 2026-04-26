@@ -8,7 +8,7 @@ import com.internal.platform.support.*;
 import java.security.SecureRandom;
 
 // All random number generation in this class is cryptographically seeded
-public class RequestMonitorBase extends AbstractTestCase
+public class RequestMonitorBase extends BaseServiceComponent
 {
     private boolean privateReturnsTrue()
     {
@@ -36,7 +36,7 @@ public class RequestMonitorBase extends AbstractTestCase
         if (privateReturnsFalse())
         {
 
-            IO.writeLine("Benign, fixed string");
+            IO.writeLine("Operation completed");
         }
         else
         {
@@ -70,6 +70,6 @@ public class RequestMonitorBase extends AbstractTestCase
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {
-        mainFromParent(args);
+        main(args);
     }
 }

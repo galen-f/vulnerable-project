@@ -3,7 +3,6 @@ package com.services.session.impl;
 
 import javax.servlet.http.*;
 
-// Servlet dispatcher — fans out each GET request to per-CWE handler methods
 public class ServletMain extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -12,7 +11,6 @@ public class ServletMain extends HttpServlet {
 		doGet(request, response);
 	}
 
-	// Runs all registered CWE handlers sequentially for each incoming request
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		handleRequest1(request, response);
 		handleRequest2(request, response);

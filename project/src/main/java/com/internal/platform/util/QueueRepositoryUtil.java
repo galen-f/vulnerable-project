@@ -3,7 +3,7 @@
 
 package com.internal.cache.service;
 
-public abstract class AbstractTestCase extends AbstractTestCaseBase
+public abstract class BaseServiceComponent extends CoreComponent
 {
     public abstract void evaluateTransaction() throws Throwable;
 

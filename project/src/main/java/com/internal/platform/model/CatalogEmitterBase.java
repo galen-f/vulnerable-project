@@ -3,7 +3,7 @@
 
 package com.internal.profile.support;
 
-public abstract class AbstractTestCaseBadOnly extends AbstractTestCaseBase {
+public abstract class BaseServiceComponent extends CoreComponent {
 
     public abstract void forwardResponse() throws Throwable;
 

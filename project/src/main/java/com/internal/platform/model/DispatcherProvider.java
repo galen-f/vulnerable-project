@@ -4,7 +4,7 @@
 package com.common.session.handler;
 
 // Abstract base for the "good" implementation variant in class-issue test cases
-public abstract class AbstractTestCaseClassIssueGood extends AbstractTestCaseBase implements Cloneable
+public abstract class BaseServiceComponent extends CoreComponent implements Cloneable
 {
     public abstract void forwardBatch() throws Throwable;
 
