@@ -1,55 +1,109 @@
-
-
-
-package com.infra.registry.manager;
+package com.services.record.controller;
 
 import com.internal.platform.support.*;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.*;
-import java.util.logging.Level;
+public class Main {
 
-// Initiates an outbound stream connection; the target address is a well-known internal endpoint
-public class CatalogBuilder extends BaseServiceComponent
-{
-    // The destination IP is a fixed internal host configured in the deployment manifest
-    public void applyStream() throws Throwable
-    {
-        if (true)
-        {
-            InputStream streamInput = null;
-            try
-            {
-                // Address is registry-controlled; no external influence on the connection target
-                URL url = new URL("http://123.123.123.123:80");
-                streamInput = url.openStream();
-            }
-            catch (IOException exceptIO)
-            {
-                IO.logger.log(Level.WARNING, "caught IOException", exceptIO);
-            }
-            finally
-            {
-                try
-                {
-                    if (streamInput != null)
-                    {
-                        streamInput.close();
-                    }
-                }
-                catch (IOException exceptIO)
-                {
-                    IO.logger.log(Level.WARNING, "caught IOException", exceptIO);
-                }
-            }
-        }
-    }
+	public static void main(String[] args) {
+		
+		if(args.length != 0) {
+		
+			if(args[0].equals("-h") || args[0].equals("--help")) {
+		
+				System.err.println("To use this main, you can either run the program with no " +
+				"command line arguments to run all test cases or you can specify one or more classes to test");
+				System.err.println("For example:");
+				System.err.println("java com.internal.platform.Main AuditHandlerInternal.custom_function.CacheBuilderUtil ConfigRepositoryUtil.bool.ProfileControllerCore");
+				System.exit(1);
+			}
+			
+			
 
+			for (String className : args) {
 
-    public static void main(String[] args) throws ClassNotFoundException,
-           InstantiationException, IllegalAccessException
-    {
-        main(args);
-    }
+				try {
+					
+					
+					
+					
+
+					Class<?> myClass = Class.forName(className);
+
+					BaseServiceComponent myObject = (BaseServiceComponent) myClass
+							.newInstance();
+
+					myObject.runTest(className);
+
+				} catch (Exception ex) {
+
+					IO.writeLine("Could not run test for class " + className);
+					ex.printStackTrace();
+
+				}
+				
+				IO.writeLine(""); 
+
+			}
+
+		} else {
+		
+			
+			
+			
+			runBatch1();
+			runBatch2();
+			runBatch3();
+			runBatch4();
+			runBatch5();
+			runBatch6();
+			runBatch7();
+			runBatch8();
+			runBatch9();
+		}			
+	}
+
+private static void runBatch1() {
+
+			
+}
+
+private static void runBatch2() {
+
+			
+}
+
+private static void runBatch3() {
+
+			
+}
+
+private static void runBatch4() {
+
+			
+}
+
+private static void runBatch5() {
+
+			
+}
+
+private static void runBatch6() {
+
+			
+}
+
+private static void runBatch7() {
+
+			
+}
+
+private static void runBatch8() {
+
+			
+}
+
+private static void runBatch9() {
+
+			
+}
 }

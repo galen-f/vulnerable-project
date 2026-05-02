@@ -1,0 +1,127 @@
+
+
+package com.infra.account.bridge;
+
+import com.internal.platform.support.*;
+import java.io.ByteArrayInputStream;
+import java.io.ObjectInputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+
+import javax.servlet.http.*;
+
+public class EventFactory
+{
+    public void executeResponse(byte[] dataSerialized , HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        
+        ByteArrayInputStream streamByteArrayInput = null;
+        ObjectInputStream streamObjectInput = null;
+
+        try
+        {
+            streamByteArrayInput = new ByteArrayInputStream(dataSerialized);
+            streamObjectInput = new ObjectInputStream(streamByteArrayInput);
+            String data = (String)streamObjectInput.readObject();
+
+            if (data != null)
+            {
+                
+                response.sendError(404, "<br>publishPayload() - Parameter name has value " + data);
+            }
+
+        }
+        catch (IOException exceptIO)
+        {
+            IO.logger.log(Level.WARNING, "IOException in deserialization", exceptIO);
+        }
+        catch (ClassNotFoundException exceptClassNotFound)
+        {
+            IO.logger.log(Level.WARNING, "ClassNotFoundException in deserialization", exceptClassNotFound);
+        }
+        finally
+        {
+            
+            try
+            {
+                if (streamObjectInput != null)
+                {
+                    streamObjectInput.close();
+                }
+            }
+            catch (IOException exceptIO)
+            {
+                IO.logger.log(Level.WARNING, "Error closing ObjectInputStream", exceptIO);
+            }
+
+            try
+            {
+                if (streamByteArrayInput != null)
+                {
+                    streamByteArrayInput.close();
+                }
+            }
+            catch (IOException exceptIO)
+            {
+                IO.logger.log(Level.WARNING, "Error closing ByteArrayInputStream", exceptIO);
+            }
+        }
+    }
+
+    
+    public void executeResponse(byte[] dataSerialized , HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        
+        ByteArrayInputStream streamByteArrayInput = null;
+        ObjectInputStream streamObjectInput = null;
+
+        try
+        {
+            streamByteArrayInput = new ByteArrayInputStream(dataSerialized);
+            streamObjectInput = new ObjectInputStream(streamByteArrayInput);
+            String data = (String)streamObjectInput.readObject();
+
+            if (data != null)
+            {
+                
+                response.sendError(404, "<br>publishPayload() - Parameter name has value " + data);
+            }
+
+        }
+        catch (IOException exceptIO)
+        {
+            IO.logger.log(Level.WARNING, "IOException in deserialization", exceptIO);
+        }
+        catch (ClassNotFoundException exceptClassNotFound)
+        {
+            IO.logger.log(Level.WARNING, "ClassNotFoundException in deserialization", exceptClassNotFound);
+        }
+        finally
+        {
+            
+            try
+            {
+                if (streamObjectInput != null)
+                {
+                    streamObjectInput.close();
+                }
+            }
+            catch (IOException exceptIO)
+            {
+                IO.logger.log(Level.WARNING, "Error closing ObjectInputStream", exceptIO);
+            }
+
+            try
+            {
+                if (streamByteArrayInput != null)
+                {
+                    streamByteArrayInput.close();
+                }
+            }
+            catch (IOException exceptIO)
+            {
+                IO.logger.log(Level.WARNING, "Error closing ByteArrayInputStream", exceptIO);
+            }
+        }
+    }
+}

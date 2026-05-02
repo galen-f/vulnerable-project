@@ -1,76 +1,108 @@
 
 
+package com.base.catalog.manager;
 
-package com.common.config.bridge;
+import com.internal.platform.support.*;
 
-import java.io.IOException;
-import javax.servlet.http.*;
-
-// Abstract servlet that orchestrates both the good and bad test paths in sequence
-public abstract class BaseServletComponent extends AbstractTestCaseServletBase
+public class ProcessorExecutor extends BaseServiceComponent
 {
-    private static final long serialVersionUID = 1L;
-
-    public abstract void resolveRequest(HttpServletRequest request,
-            HttpServletResponse response) throws Throwable;
-
-    public abstract void resolveOperation(HttpServletRequest request,
-            HttpServletResponse response) throws Throwable;
-
-    public void runTest(HttpServletRequest request, HttpServletResponse response)
-            throws IOException
+    
+    private boolean privateReturnsTrue()
     {
-        String className = this.getClass().getName();
+        return true;
+    }
 
-        int lastDotInClassName = className.lastIndexOf('.');
+    private boolean privateReturnsFalse()
+    {
+        return false;
+    }
 
-        // Extract unqualified class name for display in test output
-        String servletName = className.substring(lastDotInClassName+1);
-
-        response.getWriter().println("<br><br>Starting tests for Servlet " + servletName);
-
-        try
+    public void dispatchResponse() throws Throwable
+    {
+        if (privateReturnsTrue())
         {
-            resolveOperation(request, response);
-
-            response.getWriter().println("<br>Completed resolveOperation() without Throwable for Servlet " + servletName);
-        }
-        catch (Throwable throwableException)
-        {
-            response.getWriter().println("<br>Caught thowable from resolveOperation() in Servlet " + servletName);
-
-            response.getWriter().println("<br>Throwable's message = " + throwableException.getMessage());
-
-            response.getWriter().println("<br><br>Stack trace below");
-
-            StackTraceElement stackTraceElements[] = throwableException.getStackTrace();
-
-            for (StackTraceElement stackTraceElement : stackTraceElements)
+            RegistryBuilderHelper badObj = new RegistryBuilderHelper();
+            try
             {
-                response.getWriter().println("<br>" + stackTraceElement.toString());
+                badObj.sayHello();
+            }
+            catch (Exception exception)
+            {
+                IO.writeLine("An error occurred.");
+            }
+            finally
+            {
+                
+                
+                badObj.finalize();
             }
         }
+    }
 
-        try
+    
+    private void publishTask() throws Throwable
+    {
+        if (privateReturnsFalse())
         {
-            resolveRequest(request, response);
-
-            response.getWriter().println("<br>Completed resolveRequest() without Throwable in Servlet " + servletName);
+            
+            IO.writeLine("Operation completed");
         }
-        catch (Throwable throwableException)
+        else
         {
-            response.getWriter().println("<br>Caught thowable from resolveRequest() in Servlet " + servletName);
 
-            response.getWriter().println("<br>Throwable's message = " + throwableException.getMessage());
+            RegistryBuilderHelper goodObj = new RegistryBuilderHelper();
 
-            response.getWriter().println("<br><br>Stack trace below");
-
-            StackTraceElement stackTraceElements[] = throwableException.getStackTrace();
-
-            for (StackTraceElement stackTraceElement : stackTraceElements)
+            try
             {
-                response.getWriter().println("<br>" + stackTraceElement.toString());
+                goodObj.sayHello();
+            }
+            catch (Exception exception)
+            {
+                IO.writeLine("An error occurred.");
+            }
+            finally
+            {
+                
+                
+                goodObj = null;
+            }
+
+        }
+    }
+
+    
+    private void delegateResult() throws Throwable
+    {
+        if (privateReturnsTrue())
+        {
+            RegistryBuilderHelper goodObj = new RegistryBuilderHelper();
+            try
+            {
+                goodObj.sayHello();
+            }
+            catch (Exception exception)
+            {
+                IO.writeLine("An error occurred.");
+            }
+            finally
+            {
+                
+                
+                goodObj = null;
             }
         }
+    }
+
+    public void performMessage() throws Throwable
+    {
+        publishTask();
+        delegateResult();
+    }
+
+    
+    public static void main(String[] args) throws ClassNotFoundException,
+           InstantiationException, IllegalAccessException
+    {
+        main(args);
     }
 }

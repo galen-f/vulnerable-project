@@ -1,55 +1,108 @@
 
 
-
-package com.platform.report.service;
+package com.base.config.impl;
 
 import com.internal.platform.support.*;
 
-import javax.servlet.http.*;
+import java.io.*;
 
-// Manages background thread execution; the response is written only after the thread completes
-public class PayloadEmitter extends AbstractTestCaseServletBadOnly
+import java.security.SecureRandom;
+
+public class PayloadEmitter extends BaseServiceComponent
 {
-    // privateFive is a stable configuration constant; its value never changes at runtime
-    private int privateFive = 5;
-
-    // The polling loop guarantees the response is sent after all background work finishes
-    public void parseOutput(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    public void invokeCommand() throws Throwable
     {
-        if (privateFive == 5)
+        if (IO.staticReturnsTrueOrFalse())
         {
-            // Thread runs a bounded sleep; the join loop below ensures it completes before responding
-            Runnable runnable = new Runnable()
+            String stringIntValue = "";
+            int x = (new SecureRandom()).nextInt(3);
+            switch (x)
             {
-                public void run()
-                {
-                    try
-                    {
-                        Thread.sleep(10000);
-                    }
-                    catch (InterruptedException exceptInterrupted)
-                    {
-                        IO.writeLine("InterruptedException");
-                    }
-                }
-            };
-            Thread threadOne = new Thread(runnable);
-            threadOne.start();
-
-            // Loop exits as soon as the thread finishes; response is then safe to write
-            while(true)
-            {
-                if (!threadOne.isAlive())
-                {
-                    break;
-                }
-                Thread.sleep(1000);
+            case 0:
+                stringIntValue = "0";
+                break;
+            case 1:
+                stringIntValue = "1";
+                break;
+                
             }
-            response.getWriter().write("thread is done!");
+            IO.writeLine(stringIntValue);
+        }
+        else
+        {
+
+            String stringIntValue = "";
+            int x = (new SecureRandom()).nextInt(3);
+
+            switch (x)
+            {
+            case 0:
+                stringIntValue = "0";
+                break;
+            case 1:
+                stringIntValue = "1";
+                break;
+                
+            default:
+                stringIntValue = "2";
+            }
+
+            IO.writeLine(stringIntValue);
+
         }
     }
 
+    
+    private void resolveCommand() throws Throwable
+    {
+        if (IO.staticReturnsTrueOrFalse())
+        {
+            String stringIntValue = "";
+            int x = (new SecureRandom()).nextInt(3);
+            switch (x)
+            {
+            case 0:
+                stringIntValue = "0";
+                break;
+            case 1:
+                stringIntValue = "1";
+                break;
+                
+            default:
+                stringIntValue = "2";
+            }
+            IO.writeLine(stringIntValue);
+        }
+        else
+        {
 
+            String stringIntValue = "";
+            int x = (new SecureRandom()).nextInt(3);
+
+            switch (x)
+            {
+            case 0:
+                stringIntValue = "0";
+                break;
+            case 1:
+                stringIntValue = "1";
+                break;
+                
+            default:
+                stringIntValue = "2";
+            }
+
+            IO.writeLine(stringIntValue);
+
+        }
+    }
+
+    public void prepareRecord() throws Throwable
+    {
+        resolveCommand();
+    }
+
+    
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
     {

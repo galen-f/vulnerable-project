@@ -1,0 +1,140 @@
+
+
+package com.base.tracker.util;
+
+import com.internal.platform.support.*;
+
+import java.util.logging.Level;
+import java.io.*;
+
+import java.sql.*;
+
+// Loads responses by opening a DB connection using the provided data string as the password
+public class ResponseLoaderV2
+{
+    // both overloads connect to "data-url" using data as the connection password
+    public void convertInput(String data ) throws Throwable
+    {
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        if (data != null)
+        {
+            try
+            {
+                
+                connection = DriverManager.getConnection("data-url", "root", data);
+                preparedStatement = connection.prepareStatement("select * from test_table");
+                resultSet = preparedStatement.executeQuery();
+            }
+            catch (SQLException exceptSql)
+            {
+                IO.logger.log(Level.WARNING, "Error with database connection", exceptSql);
+            }
+            finally
+            {
+                try
+                {
+                    if (resultSet != null)
+                    {
+                        resultSet.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing ResultSet", exceptSql);
+                }
+
+                try
+                {
+                    if (preparedStatement != null)
+                    {
+                        preparedStatement.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing PreparedStatement", exceptSql);
+                }
+
+                try
+                {
+                    if (connection != null)
+                    {
+                        connection.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing Connection", exceptSql);
+                }
+            }
+        }
+
+    }
+
+    
+    public void convertInput(String data ) throws Throwable
+    {
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        if (data != null)
+        {
+            try
+            {
+                
+                connection = DriverManager.getConnection("data-url", "root", data);
+                preparedStatement = connection.prepareStatement("select * from test_table");
+                resultSet = preparedStatement.executeQuery();
+            }
+            catch (SQLException exceptSql)
+            {
+                IO.logger.log(Level.WARNING, "Error with database connection", exceptSql);
+            }
+            finally
+            {
+                try
+                {
+                    if (resultSet != null)
+                    {
+                        resultSet.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing ResultSet", exceptSql);
+                }
+
+                try
+                {
+                    if (preparedStatement != null)
+                    {
+                        preparedStatement.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing PreparedStatement", exceptSql);
+                }
+
+                try
+                {
+                    if (connection != null)
+                    {
+                        connection.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing Connection", exceptSql);
+                }
+            }
+        }
+
+    }
+}

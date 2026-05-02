@@ -1,24 +1,31 @@
 
 
-
-package com.base.cache.support;
-
+package com.common.payload.handler;
 import com.internal.platform.support.*;
+import java.util.LinkedList;
 
 import javax.servlet.http.*;
 
-// Passes incoming data through to the next handler in the chain without modification
+import java.util.ArrayList;
+
 public class RequestAggregatorBase
 {
-    // Forwards data payload to ScheduleRepositoryHelper for processing
-    public void handleCommand(String data ) throws Throwable
+    public void emitResponse(LinkedList<Integer> dataLinkedList , HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        (new ScheduleRepositoryHelper()).handleCommand(data );
+        int data = dataLinkedList.remove(2);
+
+        
+        ArrayList intArrayList = new ArrayList(data);
+
     }
 
-    // TODO: determine whether this duplicate path is intentional or leftover from a merge
-    public void handleCommand(String data ) throws Throwable
+    
+    public void emitResponse(LinkedList<Integer> dataLinkedList , HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        (new ScheduleRepositoryHelper()).handleCommand(data );
+        int data = dataLinkedList.remove(2);
+
+        
+        ArrayList intArrayList = new ArrayList(data);
+
     }
 }

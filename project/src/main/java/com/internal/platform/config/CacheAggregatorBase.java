@@ -1,0 +1,282 @@
+
+
+package com.internal.context.support;
+
+import com.internal.platform.support.*;
+
+import java.util.logging.Level;
+import java.io.*;
+
+import java.sql.*;
+
+/**
+ * Base class for cache aggregation. Resolves items by connecting to a database
+ * using data from fixed strings or from stdin depending on which method runs.
+ */
+public class CacheAggregatorBase extends BaseServiceComponent
+{
+
+    // uses a hardcoded credential string to connect to the database
+    public void resolveItem() throws Throwable
+    {
+        String data;
+        if (true)
+        {
+            data = "7e5tc4s3";
+        }
+        else
+        {
+            
+            data = null;
+        }
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        if (data != null)
+        {
+            try
+            {
+                
+                connection = DriverManager.getConnection("data-url", "root", data);
+                preparedStatement = connection.prepareStatement("select * from test_table");
+                resultSet = preparedStatement.executeQuery();
+            }
+            catch (SQLException exceptSql)
+            {
+                IO.logger.log(Level.WARNING, "Error with database connection", exceptSql);
+            }
+            finally
+            {
+                try
+                {
+                    if (resultSet != null)
+                    {
+                        resultSet.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing ResultSet", exceptSql);
+                }
+
+                try
+                {
+                    if (preparedStatement != null)
+                    {
+                        preparedStatement.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing PreparedStatement", exceptSql);
+                }
+
+                try
+                {
+                    if (connection != null)
+                    {
+                        connection.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing Connection", exceptSql);
+                }
+            }
+        }
+
+    }
+
+    
+    // reads data from stdin and uses it for the database connection
+    private void transformInput() throws Throwable
+    {
+        String data;
+        if (false)
+        {
+            
+            data = null;
+        }
+        else
+        {
+
+            data = ""; 
+
+            
+            try
+            {
+                InputStreamReader readerInputStream = new InputStreamReader(System.in, "UTF-8");
+                BufferedReader readerBuffered = new BufferedReader(readerInputStream);
+
+                
+                data = readerBuffered.readLine();
+            }
+            catch (IOException exceptIO)
+            {
+                IO.logger.log(Level.WARNING, "Error with stream reading", exceptIO);
+            }
+
+            
+
+        }
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        if (data != null)
+        {
+            try
+            {
+                
+                connection = DriverManager.getConnection("data-url", "root", data);
+                preparedStatement = connection.prepareStatement("select * from test_table");
+                resultSet = preparedStatement.executeQuery();
+            }
+            catch (SQLException exceptSql)
+            {
+                IO.logger.log(Level.WARNING, "Error with database connection", exceptSql);
+            }
+            finally
+            {
+                try
+                {
+                    if (resultSet != null)
+                    {
+                        resultSet.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing ResultSet", exceptSql);
+                }
+
+                try
+                {
+                    if (preparedStatement != null)
+                    {
+                        preparedStatement.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing PreparedStatement", exceptSql);
+                }
+
+                try
+                {
+                    if (connection != null)
+                    {
+                        connection.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing Connection", exceptSql);
+                }
+            }
+        }
+
+    }
+
+    
+    private void emitPayload() throws Throwable
+    {
+        String data;
+        if (true)
+        {
+            data = ""; 
+            
+            try
+            {
+                InputStreamReader readerInputStream = new InputStreamReader(System.in, "UTF-8");
+                BufferedReader readerBuffered = new BufferedReader(readerInputStream);
+                
+                data = readerBuffered.readLine();
+            }
+            catch (IOException exceptIO)
+            {
+                IO.logger.log(Level.WARNING, "Error with stream reading", exceptIO);
+            }
+            
+        }
+        else
+        {
+            
+            data = null;
+        }
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        if (data != null)
+        {
+            try
+            {
+                
+                connection = DriverManager.getConnection("data-url", "root", data);
+                preparedStatement = connection.prepareStatement("select * from test_table");
+                resultSet = preparedStatement.executeQuery();
+            }
+            catch (SQLException exceptSql)
+            {
+                IO.logger.log(Level.WARNING, "Error with database connection", exceptSql);
+            }
+            finally
+            {
+                try
+                {
+                    if (resultSet != null)
+                    {
+                        resultSet.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing ResultSet", exceptSql);
+                }
+
+                try
+                {
+                    if (preparedStatement != null)
+                    {
+                        preparedStatement.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing PreparedStatement", exceptSql);
+                }
+
+                try
+                {
+                    if (connection != null)
+                    {
+                        connection.close();
+                    }
+                }
+                catch (SQLException exceptSql)
+                {
+                    IO.logger.log(Level.WARNING, "Error closing Connection", exceptSql);
+                }
+            }
+        }
+
+    }
+
+    public void publishOperation() throws Throwable
+    {
+        transformInput();
+        emitPayload();
+    }
+
+    
+    public static void main(String[] args) throws ClassNotFoundException,
+           InstantiationException, IllegalAccessException
+    {
+        main(args);
+    }
+}
